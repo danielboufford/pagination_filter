@@ -11,10 +11,7 @@
 
   function filterResults(){
     var searchInput = $(".student-search input").val().toLowerCase();
-    
     var matchingStudents = $students.filter(match);
-
-    swapOutPage($students, matchingStudents);
 
     function matchName(item) {
       var nameOfStudent = $(item).find('.student-details h3')[0].innerHTML;
@@ -30,7 +27,7 @@
       return matchName(this) || matchEmail(this);
     }
 
-    
+
   }
 
   function switchPage(){
@@ -43,6 +40,7 @@
     deselectAllPagination();
     selectActivePage();
     swapOutPage($students, $students.slice(pageStart,pageEnd));
+  }  
 
     function deselectAllPagination() {
       var $paginationLinks =  $(".pagination a");
@@ -57,6 +55,9 @@
   function swapOutPage(allStudents, studentsToDisplay) {
     allStudents.hide();
     studentsToDisplay.show();
+  }
+  function removePagination() {
+    $pageBody.remove(".pagination");
   }
 
   function init() {
